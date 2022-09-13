@@ -1,11 +1,13 @@
-import math
+import csv
+# Import a CSV file to read the names of the airports
+with open('../all-airport-data.csv', newline ='') as airportcsv:
+    airportread = csv.reader(airportcsv, delimiter=' ')
+    for row in airportread:
+        print(' '.join(row))
+        
 
-from geopy import distance
+# Create a variable for lat/lon for airport 1 and 2
 
-p1 = (43.668613, 40.258916, 0.976)
+# Read the CSV file to get store the lat/lon 
 
-p2 = (43.658852, 40.250839, 1.475)
-
-flat_distance = distance.distance(p1[:2], p2[:2]).km
-
-print(flat_distance)
+#Use GeoPy to calculate distance between the two airports
