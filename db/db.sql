@@ -1,8 +1,5 @@
-CERATE DATABASE airports;
-use allAirports
-
 CREATE TABLE IF NOT EXISTS airports (
-    'Facility Type' STR,
+    'Facility Type' str,
     'ID' str,
     'State' str,
     'County' str,	

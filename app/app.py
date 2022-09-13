@@ -1,6 +1,6 @@
 import csv
 # Import a CSV file to read the names of the airports
-with open('../all-airport-data.csv', newline ='') as airportcsv:
+with open('../all-airport-data.csv', newline =' ') as airportcsv:
     airportread = csv.reader(airportcsv, delimiter=' ')
     for row in airportread:
         print(' '.join(row))
