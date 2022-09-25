@@ -1,4 +1,26 @@
 CREATE TABLE [dbo].[allAirports]
 (
-  [Id] INT NOT NULL PRIMARY KEY
+    [FacilityType] str,
+    [ID] str,
+    [State] str,
+    [County] str,	
+    [City] str,
+    [Name] str,
+    [Ownership] str,	
+    [Use] str,	
+    [ARPLatitude] float,	
+    [ARPLatitudeSec] float,	
+    [ARPLongitude] float,	
+    [ARPLongitudeSec] float,	
+    [Elevation] str,	
+    [MagneticVariation] str,	
+    [Sectional] str,
+    [TieInFSSId] str,
+    [TieInFSSName] str,
+    [FSSTollFreeNumber] str,
+    [FuelTypes] str,	
+    [ATCT] str,	
+    [UNICOM] str,	
+    [CTAF] str,	
+    [ICAOId] str, 
 )

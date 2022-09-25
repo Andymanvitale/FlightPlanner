@@ -1,0 +1,6 @@
+{
+    "dataworkspace.excludedProjects": [
+        "db/airports/airports.sqlproj",
+        "db/airports/airports/airports.sqlproj"
+    ]
+}

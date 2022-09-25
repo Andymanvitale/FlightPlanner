@@ -21,4 +21,7 @@ rawStartLongitude = str(longInput1).split()
 longValue = rawStartLongitude[1]
 arrayLongitude = str(longValue).split("-")
 startingPointLong = int(arrayLongitude[0]) + (int(arrayLongitude[1]) / 60) + (int(arrayLongitude[2][:2]) / 3600)
+
+if "W" in arrayLongitude[2]:
+    startingPointLong *= -1
 print(startingPointLong)
