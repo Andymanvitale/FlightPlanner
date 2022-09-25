@@ -8,11 +8,17 @@ userInput1.upper()
 userInput2 = input("Arrival airport code: ")
 # Create a variable for lat/lon for airport 1 and 2
 latInput1 = df.ARPLatitude[df["LocId"] == userInput1]
-print(latInput1)
 
 longInput1 = df.ARPLongitude[df["LocId"] == userInput1]
-#Use GeoPy to calculate distance between the two airports
-foo = str(latInput1).split()
-latValue = foo[1]
-
-print(latValue)
+#Change from DMS to decimal lat and longitude
+rawStartLat = str(latInput1).split()
+latValue = rawStartLat[1]
+arrayLat = str(latValue).split("-")
+startingPointLat = int(arrayLat[0]) + (int(arrayLat[1]) / 60) + (int(arrayLat[2][:2]) / 3600)
+print(startingPointLat)
+#Same for Longitude
+rawStartLongitude = str(longInput1).split()
+longValue = rawStartLongitude[1]
+arrayLongitude = str(longValue).split("-")
+startingPointLong = int(arrayLongitude[0]) + (int(arrayLongitude[1]) / 60) + (int(arrayLongitude[2][:2]) / 3600)
+print(startingPointLong)
