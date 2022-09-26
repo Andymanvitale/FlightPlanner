@@ -1,3 +1,4 @@
+--Create a table
 CREATE TABLE [dbo].[all-airport-data] (
     [Facility_Type]        NVARCHAR (50) NULL,
     [LocId]                NVARCHAR (50) NULL,
@@ -26,3 +27,31 @@ CREATE TABLE [dbo].[all-airport-data] (
 
 GO
 
+--Using the local database I set up, add all of the data to the db on this project
+INSERT INTO [all-airport-data]
+SELECT * FROM [airports].[dbo].[all-airport-data]
+
+
+SELECT TOP (1000) [Facility_Type]
+      ,[LocId]
+      ,[State_Id]
+      ,[County]
+      ,[City]
+      ,[Name]
+      ,[Use]
+      ,[ARPLatitude]
+      ,[ARP_Latitude_Sec]
+      ,[ARPLongitude]
+      ,[ARP_Longitude_Sec]
+      ,[Elevation]
+      ,[Magnetic_Variation]
+      ,[Sectional]
+      ,[Tie_In_FSS_Id]
+      ,[Tie_In_FSS_Name]
+      ,[FSS_Toll_Free_Number]
+      ,[Fuel_Types]
+      ,[ATCT]
+      ,[UNICOM]
+      ,[CTAF]
+      ,[ICAOId]
+  FROM [all-airport-data]
