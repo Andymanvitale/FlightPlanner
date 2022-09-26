@@ -1,27 +1,48 @@
 import pandas as pd
-import geopy as gp
+from geopy import distance
 # Import a CSV file to read the names of the airports
 df = pd.read_csv('../all-airport-data.csv')
         
 userInput1 = input("Departure airport Code: ")
 userInput1.upper()
 userInput2 = input("Arrival airport code: ")
-# Create a variable for lat/lon for airport 1 and 2
-latInput1 = df.ARPLatitude[df["LocId"] == userInput1]
+userInput2.upper()
+# Create a variable for lat/lon for airport 1
+latInput1 = df.ARPLatitude[df["LocId"] == userInput1.upper()]
+longInput1 = df.ARPLongitude[df["LocId"] == userInput1.upper()]
 
-longInput1 = df.ARPLongitude[df["LocId"] == userInput1]
 #Change from DMS to decimal lat and longitude
 rawStartLat = str(latInput1).split()
 latValue = rawStartLat[1]
 arrayLat = str(latValue).split("-")
 startingPointLat = int(arrayLat[0]) + (int(arrayLat[1]) / 60) + (int(arrayLat[2][:2]) / 3600)
-print(startingPointLat)
+print("Starting Lat: " + str(startingPointLat))
+
 #Same for Longitude
 rawStartLongitude = str(longInput1).split()
 longValue = rawStartLongitude[1]
 arrayLongitude = str(longValue).split("-")
 startingPointLong = int(arrayLongitude[0]) + (int(arrayLongitude[1]) / 60) + (int(arrayLongitude[2][:2]) / 3600)
+print("Starting Long: " + str(startingPointLong))
 
+#If in the western hemisphere (Longitude is W) then multiply by -1 to be in the correct hemisphere
 if "W" in arrayLongitude[2]:
     startingPointLong *= -1
-print(startingPointLong)
+
+#Create a variable for lat/lon for airport 2
+latInput2 = df.ARPLatitude[df["LocId"] == userInput2]
+longInput2 = df.ARPLongitude[df["LocId"] == userInput2]
+
+#Change from DMS to decimal lat and longitude
+rawEndLat = str(latInput2).split()
+latEndValue = rawEndLat[1]
+arrayEndLat = str(latEndValue).split("-")
+endPointLat = int(arrayEndLat[0]) + (int(arrayEndLat[1]) / 60) + (int(arrayEndLat[2][:2]) / 3600)
+print("End Lat: " + str(endPointLat))
+
+#Same for Longitude
+rawEndLongitude = str(longInput2).split()
+longEndValue = rawEndLongitude[1]
+arrayEndLongitude = str(longEndValue).split("-")
+endingPointLong = int(arrayEndLongitude[0]) + (int(arrayEndLongitude[1]) / 60) + (int(arrayEndLongitude[2][:2]) / 3600)
+print("End Longitude: " + str(endingPointLong))
