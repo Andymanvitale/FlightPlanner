@@ -4,3 +4,7 @@
 and features will be added.</p>
 <h3>07 September 2022</h3>
 <p>The main idea of this is to be able to plan a flight without using paper charts. It will start out with getting distances between airports, then move into more detailed planning as features get added.</p>
+
+<h3>26 September 2022</h3>
+<hr>
+<p>No longer going to use sql to access the data, will use pandas and a csv file to access what I need.</p>
