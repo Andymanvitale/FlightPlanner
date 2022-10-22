@@ -16,14 +16,14 @@ rawStartLat = str(latInput1).split()
 latValue = rawStartLat[1]
 arrayLat = str(latValue).split("-")
 startingPointLat = int(arrayLat[0]) + (int(arrayLat[1]) / 60) + (int(arrayLat[2][:2]) / 3600)
-print("Starting Lat: " + str(startingPointLat))
+#print("Starting Lat: " + str(startingPointLat))
 
 #Same for Longitude
 rawStartLongitude = str(longInput1).split()
 longValue = rawStartLongitude[1]
 arrayLongitude = str(longValue).split("-")
 startingPointLong = int(arrayLongitude[0]) + (int(arrayLongitude[1]) / 60) + (int(arrayLongitude[2][:2]) / 3600)
-print("Starting Long: " + str(startingPointLong))
+#print("Starting Long: " + str(startingPointLong))
 
 #If in the western hemisphere (Longitude is W) then multiply by -1 to be in the correct hemisphere
 if "W" in arrayLongitude[2]:
@@ -38,11 +38,25 @@ rawEndLat = str(latInput2).split()
 latEndValue = rawEndLat[1]
 arrayEndLat = str(latEndValue).split("-")
 endPointLat = int(arrayEndLat[0]) + (int(arrayEndLat[1]) / 60) + (int(arrayEndLat[2][:2]) / 3600)
-print("End Lat: " + str(endPointLat))
+#print("End Lat: " + str(endPointLat))
 
 #Same for Longitude
 rawEndLongitude = str(longInput2).split()
 longEndValue = rawEndLongitude[1]
 arrayEndLongitude = str(longEndValue).split("-")
-endingPointLong = int(arrayEndLongitude[0]) + (int(arrayEndLongitude[1]) / 60) + (int(arrayEndLongitude[2][:2]) / 3600)
-print("End Longitude: " + str(endingPointLong))
+endPointLong = int(arrayEndLongitude[0]) + (int(arrayEndLongitude[1]) / 60) + (int(arrayEndLongitude[2][:2]) / 3600)
+#print("End Longitude: " + str(endPointLong))
+
+#If in the western hemisphere (Longitude is W) then multiply by -1 to be in the correct hemisphere
+if "W" in arrayEndLongitude[2]:
+    endPointLong *= -1
+
+
+#Create start point as array for lat lon
+startTuple = (startingPointLat, startingPointLong)
+endTuple = (endPointLat, endPointLong)
+
+print(startTuple)
+print(endTuple)
+
+print(distance.distance(startTuple, endTuple).nm)
