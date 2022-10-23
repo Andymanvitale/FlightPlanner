@@ -1,5 +1,18 @@
 import pandas as pd
 from geopy import distance
+from flask import Flask, request, render_template
+
+app = Flask(__name__)
+
+@app.route('/')
+def my_form():
+    return render_template('index.html')
+
+@app.route('/', methods=['POST'])
+def my_form_post():
+    variable = request.form['variable']
+    return variable
+
 # Import a CSV file to read the names of the airports
 df = pd.read_csv('../all-airport-data.csv')
         
