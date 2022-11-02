@@ -1,7 +1,7 @@
 import pandas as pd
 from geopy import distance
 from flask import Flask, request, render_template
-import django
+import simplejson as json
 
 app = Flask(__name__)
 
