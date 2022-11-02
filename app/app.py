@@ -1,7 +1,6 @@
 import pandas as pd
 from geopy import distance
 from flask import Flask, request, render_template
-import simplejson as json
 
 app = Flask(__name__)
 
@@ -24,12 +23,10 @@ def endAptPost():
 df = pd.read_csv('../all-airport-data.csv')
         
 userInput1 = startAptPost
-userInput1.upper()
 userInput2 = endAptPost
-userInput2.upper()
 # Create a variable for lat/lon for airport 1
-latInput1 = df.ARPLatitude[df["LocId"] == userInput1.upper()]
-longInput1 = df.ARPLongitude[df["LocId"] == userInput1.upper()]
+latInput1 = df.ARPLatitude[df["LocId"] == userInput1]
+longInput1 = df.ARPLongitude[df["LocId"] == userInput1]
 
 #Change from DMS to decimal lat and longitude
 rawStartLat = str(latInput1).split()
@@ -81,6 +78,6 @@ print(endTuple)
 
 print(distance.distance(startTuple, endTuple).nm)
 
-@app.route('/', methods=['POST'])
-def distance():
-    return render_template(print(distance.distance(startTuple, endTuple).nm))
+# @app.route('/', methods=['POST'])
+# def distance():
+#     return render_template(print(distance.distance(startTuple, endTuple).nm))

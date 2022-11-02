@@ -13,5 +13,6 @@ RUN pip install pandas
 RUN pip install geopy
 
 COPY . /app
+COPY . /all-airport-data.csv
 
 CMD python app.py
