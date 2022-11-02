@@ -20,13 +20,13 @@ def endAptPost():
 
 
 # Import a CSV file to read the names of the airports
-df = pd.read_csv('../all-airport-data.csv')
+df = pd.read_csv('./all-airport-data.csv')
         
-userInput1 = startAptPost
-userInput2 = endAptPost
+userInput1 = startAptPost()
+userInput2 = endAptPost()
 # Create a variable for lat/lon for airport 1
-latInput1 = df.ARPLatitude[df["LocId"] == userInput1]
-longInput1 = df.ARPLongitude[df["LocId"] == userInput1]
+latInput1 = df.ARPLatitude[df["LocId"] == userInput1.upper()]
+longInput1 = df.ARPLongitude[df["LocId"] == userInput1.upper()]
 
 #Change from DMS to decimal lat and longitude
 rawStartLat = str(latInput1).split()
