@@ -1,6 +1,7 @@
 import pandas as pd
 from geopy import distance
 from flask import Flask, request, render_template
+import django
 
 app = Flask(__name__)
 
@@ -9,16 +10,22 @@ def my_form():
     return render_template('index.html')
 
 @app.route('/', methods=['POST'])
-def my_form_post():
-    variable = request.form['variable']
-    return variable
+def startAptPost():
+    startapt = request.form['startapt']
+    return startapt
+
+@app.route('/', methods=['POST'])
+def endAptPost():
+    endapt = request.form['endapt']
+    return endapt
+
 
 # Import a CSV file to read the names of the airports
 df = pd.read_csv('../all-airport-data.csv')
         
-userInput1 = input("Departure airport Code: ")
+userInput1 = startAptPost
 userInput1.upper()
-userInput2 = input("Arrival airport code: ")
+userInput2 = endAptPost
 userInput2.upper()
 # Create a variable for lat/lon for airport 1
 latInput1 = df.ARPLatitude[df["LocId"] == userInput1.upper()]
@@ -73,3 +80,7 @@ print(startTuple)
 print(endTuple)
 
 print(distance.distance(startTuple, endTuple).nm)
+
+@app.route('/', methods=['POST'])
+def distance():
+    return render_template(print(distance.distance(startTuple, endTuple).nm))
