@@ -22,8 +22,9 @@
 
 </head>
 
-{% extends "sidebar.html" %}
-
+{% extends 'sidebar.html' %}
+{%block content}
+{%endblock}
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
@@ -34,7 +35,7 @@
                                 class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
                     </div>
 
-                    <form method = "POST">
+                    <form method = "GET">
                         <div class="row col-md-6">
                           <div class="form-group">
                             <label>Starting Airport (ICAO ID)</label>

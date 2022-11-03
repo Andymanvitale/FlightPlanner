@@ -1,18 +1,15 @@
-FROM python:3.10
+#syntax=docker/dockerfile:1
 
-EXPOSE 3000
+FROM python:3.8-slim-buster
 
 WORKDIR /app
 
-COPY requirements.txt /app
+COPY requirements.txt requirements.txt
 COPY templates /app/templates
 
-RUN pip install -r requirements.txt --upgrade pip
-RUN pip install flask-mysql
-RUN pip install pandas
-RUN pip install geopy
+RUN pip3 install -r requirements.txt
 
-COPY . /app
-COPY . /all-airport-data.csv
 
-CMD python app.py
+COPY . .
+
+CMD [ "python3", "-m", "flask", "run", "--host=0.0.0.0"]
