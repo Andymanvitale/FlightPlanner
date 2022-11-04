@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 @app.route('/d')
 def index():
-    return render_template('oldindex.html')
+    return render_template('sidebar.html')
 
 
 if __name__ == "__main__":
