@@ -1,7 +1,11 @@
 from django.shortcuts import render
+from .forms import airports
 
 def index(request):
-    return render(request, 'index.html')
+    context = {}
+    context['form']= airports()
+    return render(request, 'index.html', context)
 
 def aircraft(request):
     return render(request, 'AircraftData.html')
+

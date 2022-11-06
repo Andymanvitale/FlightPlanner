@@ -1,35 +1,29 @@
-# import pandas as pd
-# from geopy import distance
-from flask import Flask, render_template
+import pandas as pd
+from geopy import distance
+from flask import Flask, render_template, request
+from django.shortcuts import render
+from forms import airports
 
 
 app = Flask(__name__)
 
-
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return('index.html')
 
 
-if __name__ == "__main__":
-    app.run()
-
-
-@app.route('/', methods=['GET'])
-def startAptPost():
-    startapt = request.form['startapt']
-    return startapt
-
-@app.route('/', methods=['GET'])
-def endAptPost():
-    endapt = request.form['endapt']
-    return endapt
+@app.route('/', methods=['GET', 'POST'])
+def startAirport():
+    form = airports()
+    if form.is_submitted():
+        result = request.form
+    return render_template('index.html', result = result)
 
 
 # Import a CSV file to read the names of the airports
 df = pd.read_csv('./all-airport-data.csv')
         
-userInput1 = startAptPost()
+userInput1 = startapt
 userInput2 = endAptPost()
 # Create a variable for lat/lon for airport 1
 latInput1 = df.ARPLatitude[df["LocId"] == userInput1.upper()]
@@ -85,6 +79,6 @@ print(endTuple)
 
 print(distance.distance(startTuple, endTuple).nm)
 
-@app.route('/', methods=['POST'])
 def distance():
-    return render_template(print(distance.distance(startTuple, endTuple).nm))
+    distance = (distance.distance(startTuple, endTuple).nm)
+    return render(request, 'index.html', {'form': distance})
