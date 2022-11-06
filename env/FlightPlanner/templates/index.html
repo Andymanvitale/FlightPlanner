@@ -10,18 +10,15 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Flight Planner</h1>
                     </div>
 
                     <!--Airport form and submit button-->
-                    <form method = "POST">
+                    <form action ="" method = "POST" id = 'post-form'>
                         {% csrf_token %}
-                        {{ form.startapt.as_p }}
+                        {{ form.as_p }}
                         <div class="row col-md-6">
                           <div class="form-group">
-                            <label>Starting Airport (ICAO ID)</label>
-                            <input type="text" id = "startapt" name ="startapt" class="form-control">
-                            {{ form.startapt }}
                           </div>
                           
                         </div>
@@ -41,7 +38,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 Distance</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{startApt}}</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">He</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -371,30 +368,6 @@
     </div>
     <!-- End of Page Wrapper -->
 
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
 {% endblock %}
 
     <!-- Bootstrap core JavaScript-->
@@ -404,14 +377,13 @@
     <!-- Core plugin JavaScript-->
     <script src=" {% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src=" {% static 'js/sb-admin-2.min.js' %}"></script>
-
     <!-- Page level plugins -->
     <script src=" {% static 'vendor/chart.js/Chart.min.js' %}"></script>
 
     <!-- Page level custom scripts -->
     <script src=" {% static 'js/demo/chart-area-demo.js' %}"></script>
     <script src=" {% static 'js/demo/chart-pie-demo.js' %}"></script>
+    <script src=" {% static 'main.js' %}"></script>
+
 
 </body>

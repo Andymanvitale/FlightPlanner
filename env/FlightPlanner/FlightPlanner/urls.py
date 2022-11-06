@@ -22,5 +22,4 @@ app_name = 'FlightPlanner'
 urlpatterns = [
     path('', views.index),
     path('admin/', admin.site.urls),
-    path('aircraft/', views.aircraft),
 ]
