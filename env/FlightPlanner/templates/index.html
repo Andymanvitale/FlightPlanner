@@ -13,18 +13,20 @@
                         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
                     </div>
 
+                    <!--Airport form and submit button-->
                     <form method = "POST">
                         {% csrf_token %}
+                        {{ form.startapt.as_p }}
                         <div class="row col-md-6">
                           <div class="form-group">
-                            <label for = 'startapt'>Starting Airport (ICAO ID)</label>
+                            <label>Starting Airport (ICAO ID)</label>
                             <input type="text" id = "startapt" name ="startapt" class="form-control">
                             {{ form.startapt }}
                           </div>
                           
                         </div>
                         <div class="form-group">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <input type="submit" value = 'Submit' class="btn btn-primary">
                         <br>
                       </form>
                       <hr>

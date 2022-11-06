@@ -6,6 +6,6 @@ def index(request):
     context['form']= airports()
     return render(request, 'index.html', context)
 
+
 def aircraft(request):
     return render(request, 'AircraftData.html')
-
