@@ -14,16 +14,15 @@
                     </div>
 
                     <!--Airport form and submit button-->
-                    <form action ="" method = "POST" id = 'post-form'>
+                    <form action ="#" method = "get">
                         {% csrf_token %}
-                        {{ form.as_p }}
+                        {{ form }}
                         <div class="row col-md-6">
                           <div class="form-group">
-                          </div>
-                          
+                          </div>    
                         </div>
                         <div class="form-group">
-                        <input type="submit" value = 'Submit' class="btn btn-primary">
+                        <input type="submit" class="btn btn-primary">
                         <br>
                       </form>
                       <hr>
@@ -38,7 +37,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 Distance</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">He</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{submitButton}}</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
