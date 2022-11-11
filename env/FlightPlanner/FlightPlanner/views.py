@@ -15,8 +15,8 @@ def index(request):
             form.save()
         startApt = request.POST.getlist('startApt')
         endApt = request.POST.getlist('endApt')
-        print(startApt)
-        print(endApt)
+        print(''.join(startApt))
+        print(''.join(endApt))
     context = {'form':form}
     return render(request, 'index.html', context)
 
