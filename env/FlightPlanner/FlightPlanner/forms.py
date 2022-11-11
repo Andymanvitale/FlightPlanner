@@ -1,4 +1,5 @@
 from django import forms
+from .models import airportModel
 
 
 class airports(forms.Form):
@@ -6,6 +7,8 @@ class airports(forms.Form):
     endApt = forms.CharField(label = 'Destination', max_length = 3)
 
 class airportRoute(forms.ModelForm):
+    startApt = forms.CharField(label = 'Starting Airport', max_length = 3)
+    endApt = forms.CharField(label = 'Destination', max_length = 3)
     class Meta:
         fields = ['text']
         widgets = {
@@ -15,3 +18,8 @@ class airportRoute(forms.ModelForm):
                 'placeholder': 'Type in Route'
             }),
         }
+
+class startAptForm(forms.ModelForm):
+    class Meta:
+        model = airportModel
+        fields = '__all__'

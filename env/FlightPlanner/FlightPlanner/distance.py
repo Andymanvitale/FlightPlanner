@@ -2,29 +2,17 @@ import pandas as pd
 from geopy import distance
 from flask import Flask, render_template, request
 from django.shortcuts import render
-from forms import airports
+from django.db import airportModel
 
 
 app = Flask(__name__)
-
-@app.route('/')
-def index():
-    return('index.html')
-
-
-@app.route('/', methods=['GET', 'POST'])
-def startAirport():
-    form = airports()
-    if form.is_submitted():
-        result = request.form
-    return render_template('index.html', result = result)
 
 
 # Import a CSV file to read the names of the airports
 df = pd.read_csv('./all-airport-data.csv')
         
-userInput1 = startapt
-userInput2 = endAptPost()
+userInput1 = airportModel.startapt
+userInput2 = airportModel.endApt
 # Create a variable for lat/lon for airport 1
 latInput1 = df.ARPLatitude[df["LocId"] == userInput1.upper()]
 longInput1 = df.ARPLongitude[df["LocId"] == userInput1.upper()]
