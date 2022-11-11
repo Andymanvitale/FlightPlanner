@@ -19,7 +19,7 @@ class airportRoute(forms.ModelForm):
             }),
         }
 
-class startAptForm(forms.ModelForm):
+class AptForm(forms.ModelForm):
     class Meta:
         model = airportModel
         fields = '__all__'

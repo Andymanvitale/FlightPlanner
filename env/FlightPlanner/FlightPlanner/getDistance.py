@@ -4,15 +4,16 @@ from flask import Flask, render_template, request
 from django.shortcuts import render
 from django.db import airportModel
 
-
+startApt = airportModel.objects.values('startApt')
+endApt = airportModel.objects.values('endApt')
 app = Flask(__name__)
 
 
 # Import a CSV file to read the names of the airports
 df = pd.read_csv('./all-airport-data.csv')
         
-userInput1 = airportModel.startapt
-userInput2 = airportModel.endApt
+userInput1 = startApt
+userInput2 = endApt
 # Create a variable for lat/lon for airport 1
 latInput1 = df.ARPLatitude[df["LocId"] == userInput1.upper()]
 longInput1 = df.ARPLongitude[df["LocId"] == userInput1.upper()]
@@ -69,4 +70,4 @@ print(distance.distance(startTuple, endTuple).nm)
 
 def distance():
     distance = (distance.distance(startTuple, endTuple).nm)
-    return render(request, 'index.html', {'form': distance})
+    return render(request, 'index.html')
