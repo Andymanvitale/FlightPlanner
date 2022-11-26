@@ -1,12 +1,8 @@
 import pandas as pd
 from geopy import distance
-from flask import Flask, render_template, request
-from django.shortcuts import render
 from .models import airportModel
 
-app = Flask(__name__)
 
-@app.route('/')
 def findDistance(startApt, endApt):
     startApt = airportModel.objects.values('startApt')
     endApt = airportModel.objects.values('endApt')
@@ -61,15 +57,11 @@ def findDistance(startApt, endApt):
     if "W" in arrayEndLongitude[2]:
         endPointLong *= -1
 
-
     #Create start point as array for lat lon
     startTuple = (startingPointLat, startingPointLong)
     endTuple = (endPointLat, endPointLong)
-
-    print(startTuple)
-    print(endTuple)
-
-    return (distance.distance(startTuple, endTuple).nm)
+    final = distance.distance(startTuple, endTuple).nm
+    return final
 
     
    # def distance():

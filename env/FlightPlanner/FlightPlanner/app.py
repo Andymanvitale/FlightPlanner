@@ -4,12 +4,13 @@ from forms import airports
 from getDistance import findDistance
 
 app = Flask(__name__)
+app.config["DEBUG"] = True
 
 @app.route('/')
 def index():
     return('index.html')
 
-
+#Dont think I need this
 @app.route('/', methods=['GET', 'POST'])
 def startAirport():
     form = airports()
@@ -19,4 +20,5 @@ def startAirport():
 
 @app.route('/')
 def getDis():
-    return render_template('index.html')
+    calc = findDistance()
+    return render_template('index.html', result = calc)
