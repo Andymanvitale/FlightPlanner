@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .forms import  AptForm
 from .models import airportModel
-import pandas as pd
+from .getDistance import distance
 
 
 def index(request):
@@ -20,9 +20,11 @@ def index(request):
         #Get rid of the brackets and single quotes around to pass them into function
         cleanStartApt = ''.join(startApt)
         cleanEndApt = ''.join(endApt)
-        #print as a test
-        #print(cleanStartApt)
-        #print(cleanEndApt)
+
     context = {'form':form, 'startApt':cleanStartApt, 'endApt':cleanEndApt}
     return render(request, 'index.html', context)
 
+def CalcDistance(request):
+    dis = distance()
+    context = {'distance': dis}
+    return render(request, 'index.html', context)

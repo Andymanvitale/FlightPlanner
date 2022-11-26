@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 from django.shortcuts import render
 from forms import airports
-from distance import distance
+from getDistance import findDistance
 
 app = Flask(__name__)
 
@@ -16,3 +16,7 @@ def startAirport():
     if form.is_submitted():
         result = request.form
     return render_template('index.html', result = result)
+
+@app.route('/')
+def getDis():
+    return render_template('index.html')
