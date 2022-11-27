@@ -66,7 +66,8 @@ def findDistance():
     #Create start point as array for lat lon
     startTuple = (startingPointLat, startingPointLong)
     endTuple = (endPointLat, endPointLong)
-    final = distance.distance(startTuple, endTuple).nm
+    final = (distance.distance(startTuple, endTuple).nm)
+    final = (str(round(final, 2)) + " NM")
     return final
 
     
