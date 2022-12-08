@@ -2,10 +2,6 @@ from django import forms
 from .models import airportModel
 
 
-class airports(forms.Form):
-    startApt = forms.CharField(label = 'Starting Airport', max_length = 3)
-    endApt = forms.CharField(label = 'Destination', max_length = 3)
-
 class airportRoute(forms.ModelForm):
     startApt = forms.CharField(label = 'Starting Airport', max_length = 3)
     endApt = forms.CharField(label = 'Destination', max_length = 3)
