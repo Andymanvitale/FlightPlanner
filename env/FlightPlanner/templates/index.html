@@ -1,0 +1,180 @@
+{% load static %}
+<head>
+{% include 'sidebar.html' %}
+{% block content %}
+</head>
+<body>
+    {% load crispy_forms_tags %}
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Flight Planner</h1>
+                    </div>
+
+                    <!--Airport form and submit button-->
+                    <form action ="#" method = "post">
+                        <div class="row col-md-6">   
+                            {% csrf_token %}
+                            {{ form | crispy }}
+                            </div>
+                        <div class="row col-md-6">   
+                        </div>
+                        <div class="form-group">
+                        </div>
+                        <input 
+                            type="submit" 
+                            value = "Submit" 
+                            name = "distance_script" 
+                            class="btn btn-primary">
+                        <br>
+                      </form>
+                      <hr>
+
+                    <!-- Content Row -->
+                    <div class="row">
+                        <!-- Distance Card -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Distance</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                {{distance}}
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                       
+                    </div>
+
+                    <!-- Content Row -->
+
+                    <div class="row">
+
+                        <!-- Area Chart -->
+                        <div class="col-xl-8 col-lg-7">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Route Map</h6>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-area">
+                                        <canvas id="myAreaChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pie Chart -->
+                        <div class="col-xl-4 col-lg-5">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Weather and METAR</h6>
+                                    <div class="dropdown no-arrow">
+                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fa-sm fa-fw text-gray-400"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <!-- Card Body for Weather -->
+                                <div class="card-body">
+                                    <div id="wind_block" class="d-none">
+                                        <h5>Wind</h5>
+                                        <ul>
+                                          <li>
+                                            <span id="wind_direction"></span> @ <span id="wind_speed"></span><small> knots</small>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                  
+                                      <div id="visibility_block" class="d-none">
+                                        <h5>Visibility</h5>
+                                        <ul>
+                                          <li>
+                                            <span id="visibility_miles"></span><small> miles</small>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                  
+                                      <div id="cloud_block" class="d-none">
+                                        <h5>Clouds</h5>
+                                        <ul id="cloud_list">
+                                        </ul>
+                                      </div>
+                                  
+                                      <div id="cond_block" class="d-none">
+                                        <h5>Conditions</h5>
+                                        <ul id="cond_list">
+                                        </ul>
+                                      </div>
+                                  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+
+                    <!-- Content Row -->
+                    <div class="row">
+
+                        <!-- Content Column -->
+                        <div class="col-lg-6 mb-4">
+
+                            
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Your Website 2021</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+{% endblock %}
+
+    <!-- Bootstrap core JavaScript-->
+    <script src=" {% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src=" {% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src=" {% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+    <!-- Page level plugins -->
+    <script src=" {% static 'vendor/chart.js/Chart.min.js' %}"></script>
+
+    <!-- Page level custom scripts -->
+    <script src=" {% static 'js/demo/chart-area-demo.js' %}"></script>
+    <script src=" {% static 'js/demo/chart-pie-demo.js' %}"></script>
+    <script src=" {% static 'main.js' %}"></script>
+
+
+</body>
