@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .forms import  AptForm
 from .models import airportModel
 from .getDistance import findDistance
-
+import json
 
 def index(request):
     form = AptForm()
@@ -14,6 +14,7 @@ def index(request):
         form = AptForm(request.POST)
         if form.is_valid():
             form.save()
+            
     #Get the start and ending airports
     startApt = request.POST.getlist('Starting Airport')
     endApt = request.POST.getlist('End Airport')
@@ -24,6 +25,13 @@ def index(request):
     return render(request, 'index.html', context)
     #context = {'form':form}
     #return render(request, 'index.html', context)
+
+def get_weather(request):
+    url = "https://api.checkwx.com/metar/KJFK/decoded"
+
+    response = requests.request("GET", url, headers = {'X-API-Key': ''})
+
+    print(response.text)
 
 def CalcDistance(request):
     dis = findDistance()

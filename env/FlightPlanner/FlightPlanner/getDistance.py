@@ -8,26 +8,21 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'project.settings')
 django.setup()
 
 
+
+def airports(code):
+    if len(code) == 4 and code[0].upper() == "K":
+        code = code[1:]
+    return code
+
+
 def findDistance():
-
+    startApt = airports(airportModel.objects.values_list('startApt', flat = True).last())
+    endApt = airports(airportModel.objects.values_list('endApt', flat = True).last())
     try:
-        startApt = airportModel.objects.values_list('startApt', flat = True).last()
-        endApt = airportModel.objects.values_list('endApt', flat = True).last()
-
-        # Import a CSV file to read the names of the airports
         df = pd.read_csv('FlightPlanner/all-airport-data.csv')
-                
-        userInput1 = startApt
-        userInput2 = endApt
-
-        if userInput1[0].upper() == "K":
-            userInput1 = userInput1[1:]
-        if userInput2[0].upper() == "K":
-            userInput2 = userInput2[1:]
-
         # Create a variable for lat/lon for airport 1
-        latInput1 = df.ARPLatitude[df["LocId"] == userInput1]
-        longInput1 = df.ARPLongitude[df["LocId"] == userInput1]
+        latInput1 = df.ARPLatitude[df["LocId"] == startApt]
+        longInput1 = df.ARPLongitude[df["LocId"] == startApt]
 
         #Change from DMS to decimal lat and longitude !!!STARTING!!!
         rawStartLat = str(latInput1).split()
@@ -48,8 +43,8 @@ def findDistance():
             startingPointLong *= -1
 
         #Create a variable for lat/lon !!!ENDING!!!
-        latInput2 = df.ARPLatitude[df["LocId"] == userInput2]
-        longInput2 = df.ARPLongitude[df["LocId"] == userInput2]
+        latInput2 = df.ARPLatitude[df["LocId"] == endApt]
+        longInput2 = df.ARPLongitude[df["LocId"] == endApt]
 
         #Change from DMS to decimal lat and longitude !!!ENDING!!!
         rawEndLat = str(latInput2).split()
