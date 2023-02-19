@@ -15,12 +15,12 @@ def index(request):
         if form.is_valid():
             form.save()
     #Get the start and ending airports
-    startApt = request.POST.getlist('startApt')
-    endApt = request.POST.getlist('endApt')
+    startApt = request.POST.getlist('Starting Airport')
+    endApt = request.POST.getlist('End Airport')
     #Get rid of the brackets and single quotes around to pass them into function
     cleanStartApt = ''.join(startApt)
     cleanEndApt = ''.join(endApt)
-    context = {'form':form, 'startApt':cleanStartApt, 'endApt':cleanEndApt, 'distance': findDistance}
+    context = {'form':form, 'Start Airport':cleanStartApt, 'End Airport':cleanEndApt, 'distance': findDistance}
     return render(request, 'index.html', context)
     #context = {'form':form}
     #return render(request, 'index.html', context)
@@ -29,3 +29,4 @@ def CalcDistance(request):
     dis = findDistance()
     context = {'distance': dis}
     return render(request, 'index.html', context)
+

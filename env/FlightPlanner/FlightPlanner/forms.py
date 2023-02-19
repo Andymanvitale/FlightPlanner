@@ -3,8 +3,8 @@ from .models import airportModel
 
 
 class airportRoute(forms.ModelForm):
-    startApt = forms.CharField(label = 'Starting Airport', max_length = 3)
-    endApt = forms.CharField(label = 'Destination', max_length = 3)
+    startApt = forms.CharField(label = 'Starting', max_length = 4)
+    endApt = forms.CharField(label = 'Destination', max_length = 4)
     class Meta:
         fields = ['text']
         widgets = {
