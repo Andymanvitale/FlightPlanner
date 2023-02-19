@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .forms import  AptForm
 from .models import airportModel
 from .getDistance import findDistance
-import json
+import requests
 
 def index(request):
     form = AptForm()
@@ -29,7 +29,7 @@ def index(request):
 def get_weather(request):
     url = "https://api.checkwx.com/metar/KJFK/decoded"
 
-    response = requests.request("GET", url, headers = {'X-API-Key': ''})
+    response = requests.get("GET", url, headers = {'X-API-Key': '5df00ce5a84046e4ad91f3cca5'})
 
     print(response.text)
 

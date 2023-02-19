@@ -7,18 +7,23 @@ import os
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'project.settings')
 django.setup()
 
-
+def test():
+    startApt = airportModel.objects.values_list('startApt', flat = True).last()
+    endApt = airportModel.objects.values_list('endApt', flat = True).last()
+    print (startApt, endApt)
+test()
 
 def airports(code):
     if len(code) == 4 and code[0].upper() == "K":
         code = code[1:]
+        return code
     return code
 
 
 def findDistance():
-    startApt = airports(airportModel.objects.values_list('startApt', flat = True).last())
-    endApt = airports(airportModel.objects.values_list('endApt', flat = True).last())
     try:
+        startApt = airports(airportModel.objects.values_list('startApt', flat = True).last())
+        endApt = airports(airportModel.objects.values_list('endApt', flat = True).last())
         df = pd.read_csv('FlightPlanner/all-airport-data.csv')
         # Create a variable for lat/lon for airport 1
         latInput1 = df.ARPLatitude[df["LocId"] == startApt]
@@ -70,4 +75,5 @@ def findDistance():
 
         return final
     except:
-        pass
+        return "Invalid Airport Code"
+        
