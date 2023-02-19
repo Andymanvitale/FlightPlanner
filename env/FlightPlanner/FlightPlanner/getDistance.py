@@ -7,11 +7,6 @@ import os
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'project.settings')
 django.setup()
 
-def test():
-    startApt = airportModel.objects.values_list('startApt', flat = True).last()
-    endApt = airportModel.objects.values_list('endApt', flat = True).last()
-    print (startApt, endApt)
-test()
 
 def airports(code):
     if len(code) == 4 and code[0].upper() == "K":

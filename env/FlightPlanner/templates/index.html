@@ -2,6 +2,8 @@
 <head>
 {% include 'sidebar.html' %}
 {% block content %}
+<link rel="stylesheet" type="text/css" href="static\css\style.css" />
+
 </head>
 <body>
     {% load crispy_forms_tags %}
@@ -66,7 +68,12 @@
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                     <h6 class="m-0 font-weight-bold text-primary">Route Map</h6>
-                                    <script></script>
+                                    <div id = "map">
+                                    <script
+                                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly"
+                                    defer>
+                                    </script>
+                                </div>
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
@@ -172,8 +179,7 @@
     <script src=" {% static 'vendor/chart.js/Chart.min.js' %}"></script>
 
     <!-- Page level custom scripts -->
-    <script src=" {% static 'js/demo/chart-area-demo.js' %}"></script>
-    <script src=" {% static 'js/demo/chart-pie-demo.js' %}"></script>
+    <script src=" {% static 'js/demo/map.js' %}"></script>
     <script src=" {% static 'main.js' %}"></script>
 
     <script async
