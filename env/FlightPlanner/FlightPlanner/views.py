@@ -16,11 +16,11 @@ def index(request):
             form.save()
     #Get the start and ending airports
     startApt = request.POST.getlist('Starting Airport')
-    endApt = request.POST.getlist('endApt')
+    endApt = request.POST.getlist('End Airport')
     #Get rid of the brackets and single quotes around to pass them into function
     cleanStartApt = ''.join(startApt)
     cleanEndApt = ''.join(endApt)
-    context = {'form':form, 'Start Airport':cleanStartApt, 'endApt':cleanEndApt, 'distance': findDistance}
+    context = {'form':form, 'Start Airport':cleanStartApt, 'End Airport':cleanEndApt, 'distance': findDistance}
     return render(request, 'index.html', context)
     #context = {'form':form}
     #return render(request, 'index.html', context)
