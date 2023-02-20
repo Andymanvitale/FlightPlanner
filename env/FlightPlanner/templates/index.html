@@ -68,17 +68,18 @@
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                     <h6 class="m-0 font-weight-bold text-primary">Route Map</h6>
+                                    
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
                                     <div id = "map">
                                     <script
                                     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly"
                                     defer>
                                     </script>
-                                </div>
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="map">
-                                        <canvas id="myAreaChart"></canvas>
+                                    <script> 
+                                        var data = {{grids}}
+                                    </script>
                                     </div>
                                 </div>
                             </div>

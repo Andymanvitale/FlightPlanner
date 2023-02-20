@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .forms import  AptForm
 from .models import airportModel
-from .getDistance import findDistance
+from .getDistance import findDistance, airportList
 import requests
 
 def index(request):
@@ -37,4 +37,10 @@ def CalcDistance(request):
     dis = findDistance()
     context = {'distance': dis}
     return render(request, 'index.html', context)
+
+def coordinates(request):
+    coordinates = airportList()
+    context = {'grids' : coordinates}
+    return render(request, 'index.html', context)
+
 
